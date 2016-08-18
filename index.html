@@ -60,20 +60,22 @@ div#dragReult img {
             <div id="dragIn04" class="dragWrap" style="top: 200px; left: 200px;"></div>
         </div>
         <div id="dragReult" style="display:none;"><img src="images/homercat.png" alt=""></div>
+        <div id="picesContent">
+            <div class="pices" id="pices01" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px; -webkit-user-select: none;touch-action: pan-y; -webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 265px; top: 616px;transform: rotate(-28deg);">
+                <img src="images/homercat_01.png" alt="">
+            </div>
+            <div class="pices" id="pices02" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 652px;top: 616px;transform: rotate(39deg);">
+                <img src="images/homercat_02.png" alt="">
+            </div>
+            <div class="pices" id="pices03" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 1000px;top: 616px;transform: rotate(-94deg);">
+                <img src="images/homercat_03.png" alt="">
+            </div>
+            <div class="pices" id="pices04" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 1416px;top: 616px;transform: rotate(63deg);">
+                <img src="images/homercat_04.png" alt="">
+            </div>
+        </div>
     </div>
 
-    <div class="pices" id="pices01" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px; -webkit-user-select: none;touch-action: pan-y; -webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 265px; top: 616px;transform: rotate(-28deg);">
-        <img src="images/homercat_01.png" alt="">
-    </div>
-    <div class="pices" id="pices02" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 652px;top: 616px;transform: rotate(39deg);">
-        <img src="images/homercat_02.png" alt="">
-    </div>
-    <div class="pices" id="pices03" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 1000px;top: 616px;transform: rotate(-94deg);">
-        <img src="images/homercat_03.png" alt="">
-    </div>
-    <div class="pices" id="pices04" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 1416px;top: 616px;transform: rotate(63deg);">
-        <img src="images/homercat_04.png" alt="">
-    </div>
 </body>
 <script>
      //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
@@ -93,6 +95,7 @@ div#dragReult img {
         var sElement = document.getElementById(_el);
         drag(sElement);
     }
+    
     function drag(element){
         element.style.top = getCss(element,"top");
         element.style.left = getCss(element,"left");
