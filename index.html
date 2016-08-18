@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="msapplication-tap-highlight" content="no" />
      <script src="js/lib/hammer.min.js"></script>
      <style>
          .pices {
@@ -75,14 +77,27 @@ div#dragReult img {
 </body>
 <script>
      //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
-    var getCss = function(o,key){
+    function getCss(o,key){
         return o.currentStyle? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];   
     };
-
+    Array.prototype.each = function( fn, _b ) {
+         _b = _b || this;
+            for (var i = 0, j = this.length; i < j; i++) {
+                if (fn.call(_b, this[i], i, this) === false) {
+                    break
+                }
+            }
+            return _b
+    }
+    function bindPan(_el){
+        var sElement = document.getElementById(_el);
+        drag(sElement);
+    }
     function drag(element){
         element.style.top = getCss(element,"top");
         element.style.left = getCss(element,"left");
         var hammer = new Hammer(element);//hammer实例
+        hammer.get('pan').set({ direction: Hammer.DIRECTION_ALL });
         var x = 0;
         var y = 0;
         hammer.on('panstart',function(event){
@@ -98,13 +113,9 @@ div#dragReult img {
         });
 
     }
-    var myElement01 = document.getElementById("pices01");
-    var myElement02 = document.getElementById("pices02");
-    var myElement03 = document.getElementById("pices03");
-    var myElement04 = document.getElementById("pices04");
-    drag(myElement01,1);
-    drag(myElement02,2);
-    drag(myElement03,3);
-    drag(myElement04,4);
+  
+    ['pices01','pices02','pices03','pices04'].each(function(obj,i){
+            bindPan(obj)
+    })
     </script>
 </html>
