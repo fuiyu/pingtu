@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <script src="js/lib/hammer.min.js"></script>
+     <style>
+         .pices {
+            position: absolute;
+            cursor: pointer;
+            top: 460px;
+            width:200px;
+        }
+        .pices img{
+            width:100%;
+        }
+        .pices img {
+            width: 100%;
+        }
+
+.dragIn {
+    width: 400px;
+    margin: 10px auto;
+    height: 400px;
+    position: relative;
+    border: 1px solid #ccc;
+}
+
+.dragWrap {
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+div#mainContent {
+    width: 400px;
+    margin: 10px auto;
+    height: 400px;
+    position: relative;
+}
+
+div#dragReult {
+    width: 100%;
+    height: 100%;
+}
+
+div#dragReult img {
+    width: 100%;
+}
+     </style>
+</head>
+<body>
+    <div id="mainContent">
+        <div id="dragin" class="dragIn">
+            <div id="dragIn01" class="dragWrap"></div>
+            <div id="dragIn02" class="dragWrap" style="left: 200px;"></div>
+            <div id="dragIn03" class="dragWrap" style="top: 200px;"></div>
+            <div id="dragIn04" class="dragWrap" style="top: 200px; left: 200px;"></div>
+        </div>
+        <div id="dragReult" style="display:none;"><img src="images/homercat.png" alt=""></div>
+    </div>
+
+    <div class="pices" id="pices01" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px; -webkit-user-select: none;touch-action: pan-y; -webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 265px; top: 616px;transform: rotate(-28deg);">
+        <img src="images/homercat_01.png" alt="">
+    </div>
+    <div class="pices" id="pices02" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 652px;top: 616px;transform: rotate(39deg);">
+        <img src="images/homercat_02.png" alt="">
+    </div>
+    <div class="pices" id="pices03" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 1000px;top: 616px;transform: rotate(-94deg);">
+        <img src="images/homercat_03.png" alt="">
+    </div>
+    <div class="pices" id="pices04" style="box-shadow: rgba(0, 0, 0, 0.658824) -18px -18px 21px -2px;-webkit-user-select: none;touch-action: pan-y;-webkit-user-drag: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);left: 1416px;top: 616px;transform: rotate(63deg);">
+        <img src="images/homercat_04.png" alt="">
+    </div>
+</body>
+<script>
+     //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+    var getCss = function(o,key){
+        return o.currentStyle? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];   
+    };
+
+    function drag(element){
+        element.style.top = getCss(element,"top");
+        element.style.left = getCss(element,"left");
+        var hammer = new Hammer(element);//hammer实例
+        var x = 0;
+        var y = 0;
+        hammer.on('panstart',function(event){
+            x = parseInt(element.style.left);
+            y = parseInt(element.style.top);
+        });
+        hammer.on('panmove',function(event){
+            element.style.top = y + event.deltaY + "px";
+            element.style.left = x + event.deltaX + "px";
+        });
+        hammer.on('panend',function(event){
+            console.log(event)
+        });
+
+    }
+    var myElement01 = document.getElementById("pices01");
+    var myElement02 = document.getElementById("pices02");
+    var myElement03 = document.getElementById("pices03");
+    var myElement04 = document.getElementById("pices04");
+    drag(myElement01,1);
+    drag(myElement02,2);
+    drag(myElement03,3);
+    drag(myElement04,4);
+    </script>
+</html>
